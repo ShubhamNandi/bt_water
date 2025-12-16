@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<root BTCPP_format="4" main_tree_to_execute="WaterCycle">
+  <BehaviorTree ID="WaterCycle">
+    <Sequence name="WaterCycleSequence">
+      
+      <!-- Phase 1: Water Dripping -->
+      <Action ID="StartDrip" name="StartDrip"/>
+      <Action ID="WaitDripComplete" name="WaitDripComplete"/>
+      <Action ID="StopDrip" name="StopDrip"/>
+      
+      <!-- Phase 2: Water Draining -->
+      <Action ID="StartDrain" name="StartDrain"/>
+      <Action ID="WaitDrainComplete" name="WaitDrainComplete"/>
+      <Action ID="StopDrain" name="StopDrain"/>
+      
+    </Sequence>
+  </BehaviorTree>
+</root>
+
