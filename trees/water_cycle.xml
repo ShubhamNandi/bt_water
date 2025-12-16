@@ -4,13 +4,25 @@
     <Sequence name="WaterCycleSequence">
       
       <!-- Phase 1: Water Dripping -->
+      <!-- StartDrip: Write to FESTO IO pin to activate drip valve -->
       <Action ID="StartDrip" name="StartDrip"/>
-      <Action ID="WaitDripComplete" name="WaitDripComplete"/>
+      <!-- Retry until sensor (read pin) indicates water level reached -->
+      <RetryUntilSuccessful num_attempts="0">
+        <!-- WaitDripComplete: Read FESTO IO pin to check water level -->
+        <Action ID="WaitDripComplete" name="WaitDripComplete"/>
+      </RetryUntilSuccessful>
+      <!-- StopDrip: Write to FESTO IO pin to deactivate drip valve -->
       <Action ID="StopDrip" name="StopDrip"/>
       
       <!-- Phase 2: Water Draining -->
+      <!-- StartDrain: Write to FESTO IO pin to activate drain valve -->
       <Action ID="StartDrain" name="StartDrain"/>
-      <Action ID="WaitDrainComplete" name="WaitDrainComplete"/>
+      <!-- Retry until sensor (read pin) indicates drain complete -->
+      <RetryUntilSuccessful num_attempts="0">
+        <!-- WaitDrainComplete: Read FESTO IO pin to check drain level -->
+        <Action ID="WaitDrainComplete" name="WaitDrainComplete"/>
+      </RetryUntilSuccessful>
+      <!-- StopDrain: Write to FESTO IO pin to deactivate drain valve -->
       <Action ID="StopDrain" name="StopDrain"/>
       
     </Sequence>
